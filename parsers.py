@@ -12,7 +12,8 @@ def parse_trees_hight(file_path):
 
             keys = ['NAME', 'GM_LAYER', 'MAP_NAME', 'LAYER', 'POINT_SYMB',
                     'FONT_SIZE', 'FONT_COLOR', 'FONT_CHARS'] # Вроде бесполезная информация.{Elevation также можно удалить}
-
+            attributes['Coord_longitude'] = attributes.pop('TreeLocati')
+            attributes['Coord_latitude'] = attributes.pop('TreeLoca_1')
             for key in keys:
                 attributes.pop(key, None)
 
