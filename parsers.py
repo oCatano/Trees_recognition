@@ -9,12 +9,14 @@ def parse_trees_hight(file_path):
             attributes = dict(zip(fields, shape_record.record))  # Создаем словарь атрибутов
             # geometry = shape_record.shape.__geo_interface__  # Получаем геометрию в формате GeoJSON
             # feature = {"attributes": attributes, "geometry": geometry}
+
             keys = ['NAME', 'GM_LAYER', 'MAP_NAME', 'LAYER', 'POINT_SYMB',
-                    'FONT_SIZE', 'FONT_COLOR', 'FONT_CHARS'] # Вроде бесполезная информация.
+                    'FONT_SIZE', 'FONT_COLOR', 'FONT_CHARS'] # Вроде бесполезная информация.{Elevation также можно удалить}
 
             for key in keys:
                 attributes.pop(key, None)
 
-            records.append(attributes)
+            if attributes['TreeID'] is not None:
+                records.append(attributes)
 
     return records
